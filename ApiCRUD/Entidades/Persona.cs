@@ -10,7 +10,7 @@
         public string Movil { get; set; } = string.Empty;
         public string Sexo { get; set; } = string.Empty;
 
-    }
+    } 
 
 
 }
