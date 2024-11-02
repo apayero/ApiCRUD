@@ -2,7 +2,7 @@ using ApiCRUD;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-// Inicio de área de los servicios
+// Inicio de área de los servicios: Alex Mota
 
 builder.Services.AddDbContext<ApplicationDbContext>(opciones =>
 opciones.UseSqlServer("name=DefaultConnection"));
