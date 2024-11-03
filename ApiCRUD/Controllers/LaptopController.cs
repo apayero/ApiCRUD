@@ -21,7 +21,7 @@ namespace ApiCRUD.Controllers
         /// 
         /// acciones a realizar:
         /// 1) Crear un Controller
-        /// 2) hactodo lo que estará en este archivo.
+        /// 2) hacer todo lo que estará en este archivo.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
