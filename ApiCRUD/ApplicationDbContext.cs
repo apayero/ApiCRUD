@@ -19,6 +19,7 @@ namespace ApiCRUD
 
 
         public DbSet<Persona> Personas { get; set; }
+        public DbSet<Laptop> Laptops { get; set; }
 
     }
 }
