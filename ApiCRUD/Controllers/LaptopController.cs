@@ -38,7 +38,7 @@ namespace ApiCRUD.Controllers
 
             if (laptop is null)
             {
-                return NotFound();
+                return NotFound("No encontrado");
             }
 
             return laptop;
