@@ -12,7 +12,7 @@ namespace ApiCRUD.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20241102135214_inicial")]
-    partial class inicial
+    partial class Inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
