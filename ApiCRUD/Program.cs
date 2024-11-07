@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 // Inicio de área de los servicios: Alex Mota y Payero pueden actualizar código juntos
+// Otra prueba de Alex - Noviembre 7 3:03 p.m.
 
 builder.Services.AddDbContext<ApplicationDbContext>(opciones =>
 opciones.UseSqlServer("name=DefaultConnection"));
