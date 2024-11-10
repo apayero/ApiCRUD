@@ -1,4 +1,5 @@
 ﻿using ApiCRUD.Entidades;
+using ApiCRUD.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,9 +18,13 @@ namespace ApiCRUD.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Persona>> Get()
+        public async Task<ColeccionDatos<Persona>> Get(int pagina, int cantidadPorPagina)
         {
-            return await context.Personas.ToListAsync();
+            //   return await context.Personas.ToListAsync();
+            var persona = await context.Personas.AsQueryable().Paginar(pagina, cantidadPorPagina);
+
+            return persona;
+
         }
 
         [HttpGet ("{id:int}" ,Name ="ObtenerPersonaId")] 
@@ -45,5 +50,42 @@ namespace ApiCRUD.Controllers
             return CreatedAtRoute("ObtenerPersonaId" ,new {id=persona.PersonaId}, persona);
             
         }
+
+        // Agregando código HttpPut -- Alex M.
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> Put(int id,[FromBody] Persona persona)
+        {
+            var existePersona = await context.Personas.AnyAsync(x => x.PersonaId == id);
+
+            if (!existePersona)
+            {
+                return NotFound();
+            }
+
+            persona.PersonaId = 12;
+            context.Update(persona);
+            await context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        // Fin código HttpPut
+
+        // Agregando código HttpDelete Alex M.
+
+        [HttpDelete("{id:int}")]
+
+        public async Task<ActionResult> Delete(int id)
+        {
+            var filasBorradas = await context.Personas.Where(x => x.PersonaId == id).ExecuteDeleteAsync();
+
+            if(filasBorradas == 0)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
+        // Fin Agregando código HttpDelete 
     }
 }
