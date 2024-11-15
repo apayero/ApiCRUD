@@ -68,15 +68,20 @@ namespace ApiCRUD.Controllers
             return NoContent();
         }
 
-        // Fin código HttpPut
-
-        // Agregando código HttpDelete Alex M.
+    
+        /// <summary>
+        /// Fin código HttpPut
+        /// Agregando código HttpDelete Alex M.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         [HttpDelete("{id:int}")]
 
         public async Task<ActionResult> Delete(int id)
         {
-            var filasBorradas = await context.Personas.Where(x => x.PersonaId == id).ExecuteDeleteAsync();
+            var filasBorradas = await context.Personas.Where(x => x.PersonaId == id)
+                .ExecuteDeleteAsync();
 
             if(filasBorradas == 0)
             {
